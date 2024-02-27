@@ -204,8 +204,10 @@ HonorsProject: CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o
 HonorsProject: CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o
 HonorsProject: CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o
 HonorsProject: CMakeFiles/HonorsProject.dir/build.make
-HonorsProject: /usr/lib/x86_64-linux-gnu/libGL.so
 HonorsProject: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+HonorsProject: ../Gamma/build/lib/libGamma.a
+HonorsProject: /usr/lib/x86_64-linux-gnu/libGLX.so
+HonorsProject: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 HonorsProject: CMakeFiles/HonorsProject.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable HonorsProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HonorsProject.dir/link.txt --verbose=$(VERBOSE)

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/vena/school/cpp110C/honors/imgui -I/home/vena/school/cpp110C/honors/imgui/backends -I/home/vena/school/cpp110C/honors/Gamma
 
-CXX_FLAGS = -g
+CXX_FLAGS = -g -std=gnu++17
 
