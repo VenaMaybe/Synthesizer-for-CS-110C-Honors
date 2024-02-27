@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 project(HonorsProject)
 
+# Set the default build type to Debug if it's not specified
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
+endif()
+
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 
