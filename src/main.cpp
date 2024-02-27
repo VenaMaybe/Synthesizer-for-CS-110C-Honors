@@ -1,83 +1,101 @@
-/*	Gamma - Generic processing library
-	See COPYRIGHT file for authors and license information
-	
-	Example:		IO / Audio Channel Test
-	Description:	Plays a noise burst through each output channel.
-*/
+#include <iostream>
 
-#include <stdio.h>
 #include "Gamma/Gamma.h"
 #include "Gamma/AudioIO.h"
 
-using namespace gam;
+#include "Gamma/Oscillator.h"
 
-struct TestSound{
-	double env;
 
-	TestSound(): env(1){}
-
-	float operator()(){
-		float r = rnd::uniS(1.);
-		r *= env;
-		env *= 0.9997;
-		return r;
-	}
-
-	void reset(){ env = 1; }
-	bool done(){ return env < 0.001; }
+// A user defined class that can be accessed from the audio callback
+struct UserData{
+	float ampL, ampR;
+	gam::Sine<> sine;
 };
 
-TestSound src;
-int chan=-1;
 
+// create a callback for generating a block of samples
+void audioCB(gam::AudioIOData& io){
+    UserData& user = *(UserData *)io.user();
+    float ampL = user.ampL;
+    float ampR = user.ampR;
 
-void audioCB(AudioIOData & io){
+    // Generate sine wave and mix or replace input signal
+    for(int i=0; i<io.framesPerBuffer(); ++i){
+        float s = user.sine(); // Generate sine wave sample
+        float input = io.in(0,i); // Original input signal
+        float mixedSignal = (s * 0.2f) + (input * 10.f); // Example: mix sine with input signal
 
-	while(io()){
-
-		if(src.done()){
-			++chan;
-			if(chan >= io.channelsOut()) chan=0;
-			src.reset();
-			printf("chan: %d\n", chan);
-		}
-
-		io.out(chan) = src();
-	}
+        // Output the mixed signal or just the sine wave
+        io.out(0,i) = mixedSignal * ampL; // Left channel
+        io.out(1,i) = mixedSignal * ampR; // Right channel
+    }
 }
 
 
+
 int main(){
+	/*
+	// check if we have any audio devices
+	if(gam::AudioDevice::numDevices() == 0){
+		printf("Error: No audio devices detected. Exiting...\n");
+		exit(EXIT_FAILURE);
+	}
 
-	AudioDevice adevi = AudioDevice::defaultInput();
-	AudioDevice adevo = AudioDevice::defaultOutput();
-	//AudioDevice adevi = AudioDevice("Microphone (AUREON");
-	//AudioDevice adevo = AudioDevice("Speakers (AUREON");
-	//AudioDevice adevi = AudioDevice(11);
-	//AudioDevice adevo = AudioDevice(16);
-		
-	int maxIChans = adevi.channelsInMax();
-	int maxOChans = adevo.channelsOutMax();
-	printf("Max input channels:  %d\n", maxIChans);
-	printf("Max output channels: %d\n", maxOChans);
+	// list all detected audio devices
+	printf("Audio devices found:\n");
+	gam::AudioDevice::printAll();
+	printf("\n");
+	*/
 
-	AudioIO io(256, 44100., audioCB);
+	// set parameters of audio stream
+	int blockSize = 256;			// how many samples per block?
+	float sampleRate = 44100;		// sampling rate (samples/second)
+	int outputChannels = 2;			// how many output channels to open
+	int inputChannels = 1;			// how many input channels to open
+	UserData user = {-0.5, 0.5};	// external data to be passed into callback
 	
-	// Set i/o devices
+	//Get default output/input
+	gam::AudioDevice adevi = gam::AudioDevice::defaultInput();
+	gam::AudioDevice adevo = gam::AudioDevice::defaultOutput();
+	
+	// create an audio i/o object using default input and output devices
+	gam::AudioIO io(blockSize, sampleRate, audioCB, &user, outputChannels, inputChannels);
+
+	//Set it explicitly
 	io.deviceIn(adevi);
 	io.deviceOut(adevo);
-	
-	// Use the maximum number of channels
-	io.channelsIn(-1);
-	io.channelsOut(-1);
 
-	//gam::sampleRate(io.framesPerSecond());
-	if(io.start()){
-		printf("start successful\n");
-		io.print();
-		printf("\nPress 'enter' to quit...\n"); getchar();
+	// we can also set the input and output devices explicitly
+	// use device 0 for input and output
+	//io.deviceIn (AudioDevice(0));
+	//io.deviceOut(AudioDevice(0));
+
+	// use devices matching keyword in name
+	//io.deviceIn (AudioDevice("Microphone", AudioDevice::INPUT));
+	//io.deviceOut(AudioDevice("Built-in", AudioDevice::OUTPUT));
+
+	if(io.channelsOut() < 2){
+		printf("This example needs at least 2 output channels to start streaming. Exiting...\n");
+		return 0;
 	}
-	else{
-		printf("start failed\n");
+	if(io.channelsIn() < 1){
+		printf("This example needs at least 1 input channel to start streaming. Exiting...\n");
+		return 0;
 	}
+	
+	// set the global sample rate "subject"
+	gam::sampleRate(io.framesPerSecond());
+	
+	// sets the frequency
+	user.sine.freq(440);
+
+	// start the audio stream
+	io.start();
+	
+	// print some information about the i/o streams
+	printf("Audio stream info:\n");
+	io.print();
+	
+	printf("\nPress 'enter' to quit...\n"); getchar();
+	return 0;
 }
