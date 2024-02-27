@@ -1,0 +1,3 @@
+/home/vena/school/cpp110C/honors/build/CMakeFiles/HonorsProject.dir
+/home/vena/school/cpp110C/honors/build/CMakeFiles/edit_cache.dir
+/home/vena/school/cpp110C/honors/build/CMakeFiles/rebuild_cache.dir
