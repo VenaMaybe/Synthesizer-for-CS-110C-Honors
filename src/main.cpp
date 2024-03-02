@@ -47,7 +47,7 @@ int main(){
 	printf("\n");
 	*/
 
-	// set parameters of audio stream
+	// set parameters of audio stream Meow
 	int blockSize = (256*8);		// how many samples per block?
 	float sampleRate = 44100;		// sampling rate (samples/second)
 	int outputChannels = 2;			// how many output channels to open
