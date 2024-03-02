@@ -23,7 +23,7 @@ void audioCB(gam::AudioIOData& io){
     for(int i=0; i<io.framesPerBuffer(); ++i){
         float s = user.sine(); // Generate sine wave sample
         float input = io.in(0,i); // Original input signal
-        float mixedSignal = (s * 0.2f) + (input * 10.f); // Example: mix sine with input signal
+        float mixedSignal = (s * 0.1f) + (input * 0.f); // Example: mix sine with input signal
 
         // Output the mixed signal or just the sine wave
         io.out(0,i) = mixedSignal * ampL; // Left channel
@@ -48,7 +48,7 @@ int main(){
 	*/
 
 	// set parameters of audio stream
-	int blockSize = 256;			// how many samples per block?
+	int blockSize = (256*8);			// how many samples per block?
 	float sampleRate = 44100;		// sampling rate (samples/second)
 	int outputChannels = 2;			// how many output channels to open
 	int inputChannels = 1;			// how many input channels to open
