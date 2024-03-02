@@ -48,7 +48,7 @@ int main(){
 	*/
 
 	// set parameters of audio stream
-	int blockSize = (256*8);			// how many samples per block?
+	int blockSize = (256*8);		// how many samples per block?
 	float sampleRate = 44100;		// sampling rate (samples/second)
 	int outputChannels = 2;			// how many output channels to open
 	int inputChannels = 1;			// how many input channels to open
