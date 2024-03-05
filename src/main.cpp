@@ -97,23 +97,37 @@ public:
         }
     }
 
-    float generate() {
-        return currentGenerateFunc(); // Call the current generate function
-    }
+    float generate() { return currentGenerateFunc(); }
+    void setSmoothFreq(float freqToSet) { currentSetSmoothFreqFunc(freqToSet); }
+    void updateSmoothFreq() { currentUpdateSmoothFreqFunc(); }
+    void setSmoothingLen(float desiredLen) { currentSetSmoothingLenFunc(desiredLen); }
 
-    void setSmoothFreq(float freqToSet) {
-        currentSetSmoothFreqFunc(freqToSet);
-    }
+    // Method to render the oscillator's ImGui controls
+    void renderUI() {
+        if (ImGui::CollapsingHeader("Oscillator Controls")) {
+            // Render a dropdown to change the oscillator type
+            const char* oscTypes[] = { "Sine", "Saw", "Square" };
+            int currentItem = static_cast<int>(currentOscType);
+            if (ImGui::Combo("Type", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
+                changeOscillator(static_cast<OscillatorType>(currentItem));
+            }
 
-    void updateSmoothFreq() {
-        currentUpdateSmoothFreqFunc();
-    }
+            // Render a slider to control the frequency
+            if (ImGui::SliderFloat("Frequency", &targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
+                setSmoothFreq(targetFreq);
+                updateSmoothFreq();
+            }
 
-    void setSmoothingLen(float desiredLen) {
-        currentSetSmoothingLenFunc(desiredLen);
+            // Optionally, render additional controls as needed
+            float len = smoothingLength;
+            if (ImGui::SliderFloat("Smoothing Length", &len, 0.01f, 1.0f, "%.2f")) {
+                setSmoothingLen(len);
+            }
+        }
     }
 
 private:
+    float targetFreq = 440.f;
     float smoothingLength = 0.01f;
     smoothOsc<gam::Sine<>> osc_sine1{smoothingLength};
     smoothOsc<gam::Saw<>> osc_saw1{smoothingLength};
@@ -128,46 +142,21 @@ private:
 
 
 
-struct Synth {
-    
-    //smoothOsc<gam::Sine<>> osc_sine1{0.5f};
-    //smoothOsc<gam::Sine<>> mod_sine1{0.5f};
-
+class Synth {
+public: // For now organize it later lol
     Oscillator osc1{Oscillator::SAW};
-
-    // Envelop segment to linearly smooth
-    //gam::Seg<> smoothInputFreq; // This is the garget value!
-    //Synth() : targetFreq(frequency) { // Initial frequency set to frequency Hz
-    //    smoothInputFreq.length(0.05f);   // Set envelope segment length to 0.5 seconds
-    //    smoothInputFreq = targetFreq;  // Set initial target value of the envelope to 440 Hz
-    //}
-    // Function to update the target frequency and start smoothing
-    //void setFrequency(float newFreq) {
-    //    targetFreq = newFreq;
-    //    smoothInputFreq = newFreq; // Assign new target frequency to envelope
-    //}
-    // Generate and return the current audio sample
-    // Anything in here happens at audio rate per Callback!
 
     float output = 0.f;
     float generate() {
-        output = 0.f;
-        // Use the current value of the frequency envelope to set the oscillator's frequency
-        
-        //osc_sine1.smoothInputFreq = targetFreq;
-        //frequency = osc_sine1.smoothInputFreq();
-
-        //mod_sine1.freq(frequency*2);
-        //osc_sine1.freq(frequency + mod_sine1());
-
-        //osc_sine1.setFM(mod_sine1.generate());
-        //output += osc_sine1.generate() * 0.1; // Return oscillator output (scaled down)
-        //output += mod_sine1.generate() * 0.1;
-        
+        output = 0.f;        
         output += osc1.generate() * 0.1f;
-
         return output;
     }
+
+    void renderUI() {
+        osc1.renderUI();
+    }
+
 };
 
 void audioCB(gam::AudioIOData& io) {
@@ -220,6 +209,10 @@ int main() {
 	int outputChannels = 2;			// how many output channels to open
 	int inputChannels = 0;			// how many input channels to open
 	Synth synth;                	// external data to be passed into callback
+
+    synth.osc1.changeOscillator(Oscillator::SINE);
+    synth.osc1.setSmoothingLen(0.5f);
+    //Set Synth Attributes!
 	
 	//Get default output/input
 	gam::AudioDevice adevi = gam::AudioDevice::defaultInput();
@@ -256,13 +249,11 @@ int main() {
             synth.mod_sine1.updateSmoothFreq();
         };
 */
-        //
 
-        float t_slider_out = 440.f;
+        float t_slider_out;
         if(ImGui::SliderFloat("Frequency", &t_slider_out, 20.0f, 1000.0f, "%.1f Hz")) {
             synth.osc1.setSmoothFreq(t_slider_out);
             synth.osc1.updateSmoothFreq();
-            synth.osc1.setSmoothingLen(0.5f);
         };
 
         // Rendering
