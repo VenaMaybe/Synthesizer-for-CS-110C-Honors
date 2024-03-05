@@ -1,6 +1,16 @@
 [
 {
   "directory": "/home/vena/school/cpp110C/honors/build",
+  "command": "/usr/bin/g++-13  -I/home/vena/school/cpp110C/honors/imgui -I/home/vena/school/cpp110C/honors/imgui/backends -I/home/vena/school/cpp110C/honors/Gamma -g -std=gnu++17 -o CMakeFiles/HonorsProject.dir/src/Gui.cpp.o -c /home/vena/school/cpp110C/honors/src/Gui.cpp",
+  "file": "/home/vena/school/cpp110C/honors/src/Gui.cpp"
+},
+{
+  "directory": "/home/vena/school/cpp110C/honors/build",
+  "command": "/usr/bin/g++-13  -I/home/vena/school/cpp110C/honors/imgui -I/home/vena/school/cpp110C/honors/imgui/backends -I/home/vena/school/cpp110C/honors/Gamma -g -std=gnu++17 -o CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.o -c /home/vena/school/cpp110C/honors/src/SynthEngine.cpp",
+  "file": "/home/vena/school/cpp110C/honors/src/SynthEngine.cpp"
+},
+{
+  "directory": "/home/vena/school/cpp110C/honors/build",
   "command": "/usr/bin/g++-13  -I/home/vena/school/cpp110C/honors/imgui -I/home/vena/school/cpp110C/honors/imgui/backends -I/home/vena/school/cpp110C/honors/Gamma -g -std=gnu++17 -o CMakeFiles/HonorsProject.dir/src/main.cpp.o -c /home/vena/school/cpp110C/honors/src/main.cpp",
   "file": "/home/vena/school/cpp110C/honors/src/main.cpp"
 },

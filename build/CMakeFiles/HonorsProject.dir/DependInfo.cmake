@@ -15,6 +15,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/vena/school/cpp110C/honors/imgui/imgui_draw.cpp" "CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o" "gcc" "CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o.d"
   "/home/vena/school/cpp110C/honors/imgui/imgui_tables.cpp" "CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o" "gcc" "CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o.d"
   "/home/vena/school/cpp110C/honors/imgui/imgui_widgets.cpp" "CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o" "gcc" "CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o.d"
+  "/home/vena/school/cpp110C/honors/src/Gui.cpp" "CMakeFiles/HonorsProject.dir/src/Gui.cpp.o" "gcc" "CMakeFiles/HonorsProject.dir/src/Gui.cpp.o.d"
+  "/home/vena/school/cpp110C/honors/src/SynthEngine.cpp" "CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.o" "gcc" "CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.o.d"
   "/home/vena/school/cpp110C/honors/src/main.cpp" "CMakeFiles/HonorsProject.dir/src/main.cpp.o" "gcc" "CMakeFiles/HonorsProject.dir/src/main.cpp.o.d"
   )
 
