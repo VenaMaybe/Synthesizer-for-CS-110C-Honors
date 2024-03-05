@@ -29,8 +29,8 @@ template <typename OscillatorType>
 struct smoothOsc {
     OscillatorType osc;
     float targetFreq;
-    float fmFreq;
 	float frequency;
+    float modIndex;
 
     // Envelop segment to linearly smooth
     gam::Seg<> smoothInputFreq; // This is the garget value!
@@ -49,18 +49,46 @@ struct smoothOsc {
         updateSmoothFreq();
     }
 
-    void setFM(float targetFreq) {
-        fmFreq = targetFreq;
-    }
-
     float generate() {
         frequency = smoothInputFreq();
-        frequency += (fmFreq * 500.f);
         
         osc.freq(frequency);
         return osc(); // Generate and return oscillator output
     }
 
+};
+
+class Oscilator {
+public:
+    enum oscilator {SINE, SAW, SQUARE};
+    oscilator osc;
+
+    Oscilator(oscilator osc) : {
+        this->osc = osc;
+        switch (osc)
+        {
+        case SINE:
+            /* code */
+            break;
+        case SAW:
+            /* code */
+            break;
+        case SQUARE:
+            /* code */
+            break;
+        default:
+            break;
+        }
+    }
+
+private:
+    float smoothingLength = 0.01f;
+    float output = 0.f;
+
+    smoothOsc<gam::Sine<>> osc_sine1{smoothingLength};
+    //smoothOsc<gam::Tri<>> osc_tri1{smoothingLength};
+    smoothOsc<gam::Saw<>> osc_saw1{smoothingLength};
+    smoothOsc<gam::Square<>> osc_square1{smoothingLength};
 };
 
 struct Synth {
@@ -95,7 +123,7 @@ struct Synth {
         //mod_sine1.freq(frequency*2);
         //osc_sine1.freq(frequency + mod_sine1());
 
-        osc_sine1.setFM(mod_sine1.generate());
+        //osc_sine1.setFM(mod_sine1.generate());
         output += osc_sine1.generate() * 0.1; // Return oscillator output (scaled down)
         //output += mod_sine1.generate() * 0.1;
         
