@@ -9,7 +9,7 @@
 // A user defined class that can be accessed from the audio callback
 struct Synth{
 	float ampL, ampR;
-	gam::Sine<> sine;
+	gam::Sine<> osc_sine1;
 };
 
 
@@ -26,7 +26,7 @@ void audioCB(gam::AudioIOData& io){
 
     // Generate sine wave and mix or replace input signal
     for(int i=0; i<io.framesPerBuffer(); ++i){
-        float sine = user.sine(); // Generate sine wave sample
+        float sine = user.osc_sine1(); // Generate sine wave sample
         //float input = io.in(0,i); // Original input signal
         float mixedSignal = (sine * 0.2f); // + (input * 0.f); // Example: mix sine with input signal
 
@@ -92,7 +92,7 @@ int main(){
 	gam::sampleRate(io.framesPerSecond());
 	
 	// sets the frequency
-	user.sine.freq(440);
+	user.osc_sine1.freq(440);
 
 	// start the audio stream
 	io.start();

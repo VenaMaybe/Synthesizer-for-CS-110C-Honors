@@ -11,39 +11,95 @@
 // Global control variable
 bool isAudioActive = true;
 
-struct Synth {
+// A utility function to print a string
+// Base case for the variadic template print function
+void print() {
+    // Prints newline when there are no more arguments
+    std::cout << std::endl;
+}
+
+template<typename T, typename... Args>
+void print(const T &firstArg, const Args &... args) {
+    std::cout << firstArg;
+    // A recursive call on all the arguments (I think)
+    print(args...);
+}
+
+template <typename OscillatorType>
+struct smoothOsc {
+    OscillatorType osc;
     float targetFreq;
-	float frequency = 440.0f;
-    
-    gam::Sine<> sine;
-    gam::Sine<> mod;
+    float fmFreq;
+	float frequency;
 
     // Envelop segment to linearly smooth
     gam::Seg<> smoothInputFreq; // This is the garget value!
 
-    Synth() : targetFreq(frequency) { // Initial frequency set to frequency Hz
-        smoothInputFreq.length(0.05f);   // Set envelope segment length to 0.5 seconds
-        smoothInputFreq = targetFreq;  // Set initial target value of the envelope to 440 Hz
+    smoothOsc(float speed, float freq = 440.f) : targetFreq(freq), frequency(freq) {
+        smoothInputFreq.length(speed);
+        smoothInputFreq = targetFreq;
     }
 
+    void updateSmoothFreq() {
+        smoothInputFreq = targetFreq;
+    }
+
+    void setSmoothFreq(float targetFreq) {
+        this->targetFreq = targetFreq;
+        updateSmoothFreq();
+    }
+
+    void setFM(float targetFreq) {
+        fmFreq = targetFreq;
+    }
+
+    float generate() {
+        frequency = smoothInputFreq();
+        frequency += (fmFreq * 500.f);
+        
+        osc.freq(frequency);
+        return osc(); // Generate and return oscillator output
+    }
+
+};
+
+struct Synth {
+
+    float targetFreq;
+    
+    smoothOsc<gam::Sine<>> osc_sine1{0.5f};
+    smoothOsc<gam::Sine<>> mod_sine1{0.5f};
+
+    // Envelop segment to linearly smooth
+    //gam::Seg<> smoothInputFreq; // This is the garget value!
+    //Synth() : targetFreq(frequency) { // Initial frequency set to frequency Hz
+    //    smoothInputFreq.length(0.05f);   // Set envelope segment length to 0.5 seconds
+    //    smoothInputFreq = targetFreq;  // Set initial target value of the envelope to 440 Hz
+    //}
     // Function to update the target frequency and start smoothing
-    void setFrequency(float newFreq) {
-        targetFreq = newFreq;
-        smoothInputFreq = newFreq; // Assign new target frequency to envelope
-    }
-
+    //void setFrequency(float newFreq) {
+    //    targetFreq = newFreq;
+    //    smoothInputFreq = newFreq; // Assign new target frequency to envelope
+    //}
     // Generate and return the current audio sample
     // Anything in here happens at audio rate per Callback!
+
+    float output = 0.f;
     float generate() {
+        output = 0.f;
         // Use the current value of the frequency envelope to set the oscillator's frequency
-        smoothInputFreq = targetFreq;
-        frequency = smoothInputFreq();
+        
+        //osc_sine1.smoothInputFreq = targetFreq;
+        //frequency = osc_sine1.smoothInputFreq();
 
-        mod.freq(frequency*2);
-        sine.freq(frequency + mod());
+        //mod_sine1.freq(frequency*2);
+        //osc_sine1.freq(frequency + mod_sine1());
 
-
-        return sine() * 0.1; // Return oscillator output (scaled down)
+        osc_sine1.setFM(mod_sine1.generate());
+        output += osc_sine1.generate() * 0.1; // Return oscillator output (scaled down)
+        //output += mod_sine1.generate() * 0.1;
+        
+        return output;
     }
 };
 
@@ -54,8 +110,9 @@ void audioCB(gam::AudioIOData& io) {
 		// Generate sine wave and mix or replace input signal
 		for(int i=0; i<io.framesPerBuffer(); ++i){
 			// Output the mixed signal or just the sine wave
-			io.out(0,i) = synth.generate();; // Left channel
-			io.out(1,i) = synth.generate();; // Right channel
+            float sample = synth.generate();
+			io.out(0,i) = sample; // Left channel
+			io.out(1,i) = sample; // Right channel
 		}
     } else {
         // Output silence
@@ -124,7 +181,13 @@ int main() {
 
         // Create a checkbox to control audio
         ImGui::Checkbox("Enable Audio", &isAudioActive);
-		ImGui::SliderFloat("Frequency", &synth.targetFreq, 20.0f, 1000.0f, "%.1f Hz");
+		if(ImGui::SliderFloat("Frequency", &synth.osc_sine1.targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
+            synth.osc_sine1.updateSmoothFreq();
+        };
+
+        if(ImGui::SliderFloat("Frequency Mod", &synth.mod_sine1.targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
+            synth.mod_sine1.updateSmoothFreq();
+        };
 
         // Rendering
         ImGui::Render();
