@@ -297,54 +297,6 @@ imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.s
 .PHONY : imgui/imgui_widgets.cpp.s
 
-src/Gui.o: src/Gui.cpp.o
-.PHONY : src/Gui.o
-
-# target to build an object file
-src/Gui.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/Gui.cpp.o
-.PHONY : src/Gui.cpp.o
-
-src/Gui.i: src/Gui.cpp.i
-.PHONY : src/Gui.i
-
-# target to preprocess a source file
-src/Gui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/Gui.cpp.i
-.PHONY : src/Gui.cpp.i
-
-src/Gui.s: src/Gui.cpp.s
-.PHONY : src/Gui.s
-
-# target to generate assembly for a file
-src/Gui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/Gui.cpp.s
-.PHONY : src/Gui.cpp.s
-
-src/SynthEngine.o: src/SynthEngine.cpp.o
-.PHONY : src/SynthEngine.o
-
-# target to build an object file
-src/SynthEngine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.o
-.PHONY : src/SynthEngine.cpp.o
-
-src/SynthEngine.i: src/SynthEngine.cpp.i
-.PHONY : src/SynthEngine.i
-
-# target to preprocess a source file
-src/SynthEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.i
-.PHONY : src/SynthEngine.cpp.i
-
-src/SynthEngine.s: src/SynthEngine.cpp.s
-.PHONY : src/SynthEngine.s
-
-# target to generate assembly for a file
-src/SynthEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.s
-.PHONY : src/SynthEngine.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -399,12 +351,6 @@ help:
 	@echo "... imgui/imgui_widgets.o"
 	@echo "... imgui/imgui_widgets.i"
 	@echo "... imgui/imgui_widgets.s"
-	@echo "... src/Gui.o"
-	@echo "... src/Gui.i"
-	@echo "... src/Gui.s"
-	@echo "... src/SynthEngine.o"
-	@echo "... src/SynthEngine.i"
-	@echo "... src/SynthEngine.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

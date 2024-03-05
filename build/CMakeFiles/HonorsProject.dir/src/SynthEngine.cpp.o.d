@@ -1,6 +1,7 @@
-CMakeFiles/HonorsProject.dir/src/main.cpp.o: \
- /home/vena/school/cpp110C/honors/src/main.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
+CMakeFiles/HonorsProject.dir/src/SynthEngine.cpp.o: \
+ /home/vena/school/cpp110C/honors/src/SynthEngine.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
+ /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -242,11 +243,6 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: \
  /home/vena/school/cpp110C/honors/Gamma/Gamma/rnd.h \
  /usr/include/c++/13/ctime \
  /home/vena/school/cpp110C/honors/Gamma/Gamma/AudioIO.h \
- /home/vena/school/cpp110C/honors/Gamma/Gamma/Envelope.h \
- /usr/include/c++/13/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
- /home/vena/school/cpp110C/honors/Gamma/Gamma/Domain.h \
- /home/vena/school/cpp110C/honors/Gamma/Gamma/Node.h \
  /home/vena/school/cpp110C/honors/Gamma/Gamma/Oscillator.h \
  /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
  /usr/include/c++/13/unordered_map \
@@ -260,9 +256,5 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/uniform_int_dist.h \
  /usr/include/c++/13/bits/stl_tempbuf.h \
- /home/vena/school/cpp110C/honors/imgui/imgui.h \
- /home/vena/school/cpp110C/honors/imgui/imconfig.h /usr/include/assert.h \
- /home/vena/school/cpp110C/honors/imgui/backends/imgui_impl_glfw.h \
- /home/vena/school/cpp110C/honors/imgui/backends/imgui_impl_opengl3.h \
- /usr/include/GLFW/glfw3.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
- /usr/include/KHR/khrplatform.h
+ /home/vena/school/cpp110C/honors/Gamma/Gamma/Domain.h \
+ /home/vena/school/cpp110C/honors/Gamma/Gamma/Node.h

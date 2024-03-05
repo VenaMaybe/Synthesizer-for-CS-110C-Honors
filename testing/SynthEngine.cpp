@@ -7,7 +7,7 @@
 
 
 // A user defined class that can be accessed from the audio callback
-struct UserData{
+struct Synth{
 	float ampL, ampR;
 	gam::Sine<> sine;
 };
@@ -20,7 +20,7 @@ struct UserData{
 // determined by the buffere size and sample rate.
 //
 void audioCB(gam::AudioIOData& io){
-    UserData& user = *(UserData *)io.user();
+    Synth& user = *(Synth *)io.user();
     float ampL = user.ampL;
     float ampR = user.ampR;
 
@@ -57,7 +57,7 @@ int main(){
 	float sampleRate = 44100;		// sampling rate (samples/second)
 	int outputChannels = 2;			// how many output channels to open
 	int inputChannels = 1;			// how many input channels to open
-	UserData user = {-0.5, 0.5};	// external data to be passed into callback
+	Synth user = {-0.5, 0.5};	// external data to be passed into callback
 	
 	//Get default output/input
 	gam::AudioDevice adevi = gam::AudioDevice::defaultInput();

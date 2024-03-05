@@ -26,6 +26,7 @@ set(IMGUI_BACKENDS_SOURCES
     ${CMAKE_SOURCE_DIR}/imgui/backends/imgui_impl_glfw.cpp
     ${CMAKE_SOURCE_DIR}/imgui/backends/imgui_impl_opengl3.cpp
 )
+
 add_executable(HonorsProject ${PROJECT_SOURCES} ${IMGUI_SOURCES} ${IMGUI_BACKENDS_SOURCES})
 
 # Add and link the Gamma static library
