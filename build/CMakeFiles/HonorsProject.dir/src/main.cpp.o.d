@@ -256,4 +256,11 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/uniform_int_dist.h \
  /usr/include/c++/13/bits/stl_tempbuf.h \
  /home/vena/school/cpp110C/honors/Gamma/Gamma/Domain.h \
- /home/vena/school/cpp110C/honors/Gamma/Gamma/Node.h
+ /home/vena/school/cpp110C/honors/Gamma/Gamma/Node.h \
+ /home/vena/school/cpp110C/honors/imgui/imgui.h \
+ /home/vena/school/cpp110C/honors/imgui/imconfig.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h /usr/include/assert.h \
+ /home/vena/school/cpp110C/honors/imgui/backends/imgui_impl_glfw.h \
+ /home/vena/school/cpp110C/honors/imgui/backends/imgui_impl_opengl3.h \
+ /usr/include/GLFW/glfw3.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h

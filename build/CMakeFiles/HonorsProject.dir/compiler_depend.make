@@ -1461,7 +1461,17 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/stl_tempbuf.h \
   ../Gamma/Gamma/Domain.h \
-  ../Gamma/Gamma/Node.h
+  ../Gamma/Gamma/Node.h \
+  ../imgui/imgui.h \
+  ../imgui/imconfig.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
+  /usr/include/assert.h \
+  ../imgui/backends/imgui_impl_glfw.h \
+  ../imgui/backends/imgui_impl_opengl3.h \
+  /usr/include/GLFW/glfw3.h \
+  /usr/include/GL/gl.h \
+  /usr/include/GL/glext.h \
+  /usr/include/KHR/khrplatform.h
 
 
 ../Gamma/Gamma/Node.h:
