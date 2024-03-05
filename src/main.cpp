@@ -12,6 +12,7 @@ bool isAudioActive = true;
 
 struct UserData {
     float ampL, ampR;
+	float frequency = 440.0f;
     gam::Sine<> sine;
 };
 
@@ -20,6 +21,9 @@ void audioCB(gam::AudioIOData& io) {
     if (isAudioActive) {
         // Your existing audio processing code...
 		UserData& user = *(UserData *)io.user();
+
+		// Processing!!
+		user.sine.freq(user.frequency);
 		float ampL = user.ampL;
 		float ampR = user.ampR;
 
@@ -87,14 +91,11 @@ int main() {
 
 	// set the global sample rate "subject"
 	gam::sampleRate(io.framesPerSecond());
-	
-	// sets the frequency
-	user.sine.freq(440);
 
     io.start();
 
-    while (!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
+    while (!glfwWindowShouldClose(window)) { // Checks if the window has been instructed to close.
+        glfwPollEvents(); // Processes window events like keyboard and mouse input.
 
         // Start the ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
@@ -103,6 +104,7 @@ int main() {
 
         // Create a checkbox to control audio
         ImGui::Checkbox("Enable Audio", &isAudioActive);
+		ImGui::SliderFloat("Frequency", &user.frequency, 20.0f, 1000.0f, "%.1f Hz");
 
         // Rendering
         ImGui::Render();
