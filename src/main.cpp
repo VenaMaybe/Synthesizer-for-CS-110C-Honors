@@ -28,16 +28,20 @@ void print(const T &firstArg, const Args &... args) {
 template <typename OscillatorType>
 struct smoothOsc {
     OscillatorType osc;
-    float targetFreq;
-	float frequency;
+    float targetFreq = 440.f;
+	float frequency = targetFreq;
     float modIndex;
 
     // Envelop segment to linearly smooth
     gam::Seg<> smoothInputFreq; // This is the garget value!
 
-    smoothOsc(float speed, float freq = 440.f) : targetFreq(freq), frequency(freq) {
+    smoothOsc(float speed, float freq = 440.f)
+    : targetFreq(freq), frequency(freq), smoothInputFreq(speed, freq, freq, 0.f) {
         smoothInputFreq.length(speed);
         smoothInputFreq = targetFreq;
+
+        //float x = smoothInputFreq;
+        print("FIRST FREQ:", targetFreq);
     }
 
     void updateSmoothFreq() {
@@ -53,9 +57,12 @@ struct smoothOsc {
         updateSmoothFreq();
     }
 
+    int i = 0;
     float generate() {
         frequency = smoothInputFreq();
-        
+        if(i<100) print(frequency);
+        i++;
+
         osc.freq(frequency);
         return osc(); // Generate and return oscillator output
     }
@@ -110,28 +117,29 @@ public:
             int currentItem = static_cast<int>(currentOscType);
             if (ImGui::Combo("Type", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
                 changeOscillator(static_cast<OscillatorType>(currentItem));
+                setSmoothingLen(smoothingLength);
             }
 
+            //print("RENDERING SLIDERS");
             // Render a slider to control the frequency
-            if (ImGui::SliderFloat("Frequency", &targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
+            if (ImGui::SliderFloat("Frequency", &this->targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
                 setSmoothFreq(targetFreq);
                 updateSmoothFreq();
             }
 
             // Optionally, render additional controls as needed
-            float len = smoothingLength;
-            if (ImGui::SliderFloat("Smoothing Length", &len, 0.01f, 1.0f, "%.2f")) {
-                setSmoothingLen(len);
+            if (ImGui::SliderFloat("Smoothing Length", &this->smoothingLength, 0.f, 1.0f, "%.2f")) {
+                setSmoothingLen(smoothingLength);
             }
         }
     }
 
 private:
-    float targetFreq = 440.f;
+    float targetFreq = 540.f;
     float smoothingLength = 0.01f;
-    smoothOsc<gam::Sine<>> osc_sine1{smoothingLength};
-    smoothOsc<gam::Saw<>> osc_saw1{smoothingLength};
-    smoothOsc<gam::Square<>> osc_square1{smoothingLength};
+    smoothOsc<gam::Sine<>> osc_sine1{smoothingLength, targetFreq};
+    smoothOsc<gam::Saw<>> osc_saw1{smoothingLength, targetFreq};
+    smoothOsc<gam::Square<>> osc_square1{smoothingLength, targetFreq};
 
     std::function<float()> currentGenerateFunc; // Function pointer to current generate function
     std::function<void(float)> currentSetSmoothFreqFunc;
@@ -144,7 +152,7 @@ private:
 
 class Synth {
 public: // For now organize it later lol
-    Oscillator osc1{Oscillator::SAW};
+    Oscillator osc1{Oscillator::SINE};
 
     float output = 0.f;
     float generate() {
@@ -210,9 +218,11 @@ int main() {
 	int inputChannels = 0;			// how many input channels to open
 	Synth synth;                	// external data to be passed into callback
 
+    print("SETTING SYNTH ATTRIBUTES!!");
+    //Set Synth Attributes!
+
     synth.osc1.changeOscillator(Oscillator::SINE);
     synth.osc1.setSmoothingLen(0.5f);
-    //Set Synth Attributes!
 	
 	//Get default output/input
 	gam::AudioDevice adevi = gam::AudioDevice::defaultInput();
@@ -240,21 +250,10 @@ int main() {
         ImGui::NewFrame();
 
         // Create a checkbox to control audio
-/*        ImGui::Checkbox("Enable Audio", &isAudioActive);
-		if(ImGui::SliderFloat("Frequency", &synth.osc_sine1.targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
-            synth.osc_sine1.updateSmoothFreq();
-        };
-
-        if(ImGui::SliderFloat("Frequency Mod", &synth.mod_sine1.targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
-            synth.mod_sine1.updateSmoothFreq();
-        };
-*/
-
-        float t_slider_out;
-        if(ImGui::SliderFloat("Frequency", &t_slider_out, 20.0f, 1000.0f, "%.1f Hz")) {
-            synth.osc1.setSmoothFreq(t_slider_out);
-            synth.osc1.updateSmoothFreq();
-        };
+        ImGui::Checkbox("Enable Audio", &isAudioActive);
+		
+        // Main synth Ui
+        synth.renderUI();
 
         // Rendering
         ImGui::Render();
