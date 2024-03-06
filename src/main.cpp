@@ -104,29 +104,38 @@ public:
     void updateSmoothFreq() { currentUpdateSmoothFreqFunc(); }
     void setSmoothingLen(float desiredLen) { currentSetSmoothingLenFunc(desiredLen); }
 
+    bool windowOpen = true; // Add this flag at a global scope or within your class
+
     // Method to render the oscillator's ImGui controls
     void renderUI() {
-        if (ImGui::CollapsingHeader("Oscillator Controls")) {
-            // Render a dropdown to change the oscillator type
-            const char* oscTypes[] = { "Sine", "Saw", "Square" };
-            int currentItem = static_cast<int>(currentOscType);
-            if (ImGui::Combo("Type", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
-                changeOscillator(static_cast<OscillatorType>(currentItem));
-                setSmoothingLen(smoothingLength);
-            }
+        
+        // Impliment the X functionality later!
 
-            //print("RENDERING SLIDERS");
-            // Render a slider to control the frequency
-            if (ImGui::SliderFloat("Frequency", &this->targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
-                setSmoothFreq(targetFreq);
-                updateSmoothFreq();
-            }
-
-            // Optionally, render additional controls as needed
-            if (ImGui::SliderFloat("Smoothing Length", &this->smoothingLength, 0.f, 1.0f, "%.2f")) {
-                setSmoothingLen(smoothingLength);
-            }
+        // if (!windowOpen) return;
+        
+        ImGui::Begin("Oscillator Controls", &windowOpen, ImGuiWindowFlags_AlwaysAutoResize);
+        
+        // Render a dropdown to change the oscillator type
+        const char* oscTypes[] = { "Sine", "Saw", "Square" };
+        int currentItem = static_cast<int>(currentOscType);
+        if (ImGui::Combo("Type", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
+            changeOscillator(static_cast<OscillatorType>(currentItem));
+            setSmoothingLen(smoothingLength);
         }
+
+        //print("RENDERING SLIDERS");
+        // Render a slider to control the frequency
+        if (ImGui::SliderFloat("Frequency", &this->targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
+            setSmoothFreq(targetFreq);
+            updateSmoothFreq();
+        }
+
+        // Optionally, render additional controls as needed
+        if (ImGui::SliderFloat("Smoothing Length", &this->smoothingLength, 0.f, 1.0f, "%.2f")) {
+            setSmoothingLen(smoothingLength);
+        }
+
+        ImGui::End(); // Close the ImGui window
     }
 
 private:
@@ -142,8 +151,6 @@ private:
     std::function<void(float)> currentSetSmoothingLenFunc;
 
 };
-
-
 
 class Synth {
 public: // For now organize it later lol
