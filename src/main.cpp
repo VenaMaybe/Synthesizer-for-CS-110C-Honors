@@ -10,6 +10,8 @@
 
 // Global control variable
 bool isAudioActive = true;
+float mainVol = 0.1f;
+gam::Seg<> smoothGain(0.05f, mainVol, mainVol);
 
 // A utility function to print a string
 // Base case for the variadic template print function
@@ -159,7 +161,7 @@ public: // For now organize it later lol
     float output = 0.f;
     float generate() {
         output = 0.f;        
-        output += osc1.generate() * 0.1f;
+        output += osc1.generate();
         return output;
     }
 
@@ -173,10 +175,9 @@ void audioCB(gam::AudioIOData& io) {
     if (isAudioActive) {
         // my synth with proccessing code insdie
 		Synth& synth = *(Synth *)io.user();
-		// Generate sine wave and mix or replace input signal
-		for(int i=0; i<io.framesPerBuffer(); ++i){
-			// Output the mixed signal or just the sine wave
+		for(int i=0; i<io.framesPerBuffer(); ++i) {
             float sample = synth.generate();
+            sample *= smoothGain();
 			io.out(0,i) = sample; // Left channel
 			io.out(1,i) = sample; // Right channel
 		}
@@ -251,8 +252,11 @@ int main() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // Create a checkbox to control audio
+        // Create a checkbox to control audio and slider for main volume
         ImGui::Checkbox("Enable Audio", &isAudioActive);
+        if (ImGui::SliderFloat("Global Volume", &mainVol, 0.f, 1.0f, "%.2f")) {
+            smoothGain = std::clamp(mainVol, 0.f, 0.5f);
+        }
 		
         // Main synth Ui
         synth.renderUI();
