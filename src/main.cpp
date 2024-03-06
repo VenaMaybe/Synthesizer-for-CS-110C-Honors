@@ -37,11 +37,9 @@ struct smoothOsc {
 
     smoothOsc(float speed, float freq = 440.f)
     : targetFreq(freq), frequency(freq), smoothInputFreq(speed, freq, freq, 0.f) {
+            // calling Seg constructor so default = freq
         smoothInputFreq.length(speed);
         smoothInputFreq = targetFreq;
-
-        //float x = smoothInputFreq;
-        print("FIRST FREQ:", targetFreq);
     }
 
     void updateSmoothFreq() {
@@ -57,11 +55,8 @@ struct smoothOsc {
         updateSmoothFreq();
     }
 
-    int i = 0;
     float generate() {
         frequency = smoothInputFreq();
-        if(i<100) print(frequency);
-        i++;
 
         osc.freq(frequency);
         return osc(); // Generate and return oscillator output
@@ -135,8 +130,8 @@ public:
     }
 
 private:
-    float targetFreq = 540.f;
-    float smoothingLength = 0.01f;
+    float targetFreq = 440.f;
+    float smoothingLength = 0.1f;
     smoothOsc<gam::Sine<>> osc_sine1{smoothingLength, targetFreq};
     smoothOsc<gam::Saw<>> osc_saw1{smoothingLength, targetFreq};
     smoothOsc<gam::Square<>> osc_square1{smoothingLength, targetFreq};
