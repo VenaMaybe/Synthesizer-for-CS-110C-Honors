@@ -8,24 +8,13 @@
 #include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h> // Include GLFW support
 
+// My includes
+#include "utility.h"
+
 // Global control variable
 bool isAudioActive = true;
 float mainVol = 0.1f;
 gam::Seg<> smoothGain(0.05f, mainVol, mainVol);
-
-// A utility function to print a string
-// Base case for the variadic template print function
-void print() {
-    // Prints newline when there are no more arguments
-    std::cout << std::endl;
-}
-
-template<typename T, typename... Args>
-void print(const T &firstArg, const Args &... args) {
-    std::cout << firstArg;
-    // A recursive call on all the arguments (I think)
-    print(args...);
-}
 
 template <typename OscillatorType>
 struct smoothOsc {
