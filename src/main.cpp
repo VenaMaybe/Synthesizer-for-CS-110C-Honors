@@ -120,7 +120,7 @@ public:
         // Render a dropdown to change the oscillator type
         const char* oscTypes[] = { "Sine", "Saw", "Square" };
         int currentItem = static_cast<int>(currentOscType);
-        if (ImGui::Combo("Type", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
+        if (ImGui::Combo("Wave", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
             changeOscillator(static_cast<OscillatorType>(currentItem));
             setSmoothingLen(smoothingLength);
         }
@@ -133,7 +133,7 @@ public:
         }
 
         // Optionally, render additional controls as needed
-        if (ImGui::SliderFloat("Smoothing Length", &this->smoothingLength, 0.f, 1.0f, "%.2f")) {
+        if (ImGui::SliderFloat("Smoothing Freq", &this->smoothingLength, 0.f, 1.0f, "%.2f")) {
             setSmoothingLen(smoothingLength);
         }
 
