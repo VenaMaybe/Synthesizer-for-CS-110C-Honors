@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h> // Include GLFW support
 
 // My includes
-#include "utility.h"
+#include "vena_utility.h"
 
 // Global control variable
 bool isAudioActive = true;

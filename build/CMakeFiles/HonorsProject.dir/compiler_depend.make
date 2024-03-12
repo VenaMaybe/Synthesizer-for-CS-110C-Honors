@@ -1474,8 +1474,10 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/GL/gl.h \
   /usr/include/GL/glext.h \
   /usr/include/KHR/khrplatform.h \
-  ../src/utility.h
+  ../src/vena_utility.h
 
+
+../src/vena_utility.h:
 
 /usr/include/c++/13/bits/stl_tempbuf.h:
 
@@ -2304,8 +2306,6 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/13/include/mwaitintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/f16cintrin.h:
-
-../src/utility.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h:
 

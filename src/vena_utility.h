@@ -1,9 +1,18 @@
-#ifndef UTILITY_H
-#define UTILITY_H
+#ifndef VENA_UTILITY_H
+#define VENA_UTILITY_H
 
 #include <iostream>
 
 // A utility function to print a string
+
+// Flag for no final endl!
+struct NoEndl {};
+
+// Handling the NoEndl flag!
+inline void print(const NoEndl&) {
+    // Intentionally empty: do not print a newline when this overload is invoked
+}
+
 // Base case for the variadic template print function
 inline void print() {
     // Prints newline when there are no more arguments
@@ -17,4 +26,4 @@ inline void print(const T &firstArg, const Args &... args) {
     print(args...);
 }
 
-#endif // UTILITY_H
+#endif // VENA_UTILITY_H
