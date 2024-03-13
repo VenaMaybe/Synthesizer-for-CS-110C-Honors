@@ -17,7 +17,7 @@ float mainVol = 0.1f;
 gam::Seg<> smoothGain(0.05f, mainVol, mainVol);
 
 //#include "smoothOscillator.h"
-#include "oscillator4.h"
+#include "Oscillator4.h"
 
 
 /*

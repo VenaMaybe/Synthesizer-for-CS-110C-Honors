@@ -1,3 +1,6 @@
+#ifndef MODULE_H
+#define MODULE_H
+
 // Holds a value between -5 and 5
 #include <vector>
 #include <memory>
@@ -34,3 +37,5 @@ Module:
     List of outputs
 
 */
+
+#endif // MODULE_H
