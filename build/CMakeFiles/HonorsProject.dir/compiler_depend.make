@@ -1475,6 +1475,22 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/GL/glext.h \
   /usr/include/KHR/khrplatform.h \
   ../src/vena_utility.h \
+  ../src/oscillator4.h \
+  /usr/include/c++/13/memory \
+  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/13/bits/align.h \
+  /usr/include/c++/13/bits/unique_ptr.h \
+  /usr/include/c++/13/bits/shared_ptr.h \
+  /usr/include/c++/13/bits/shared_ptr_base.h \
+  /usr/include/c++/13/bits/allocated_ptr.h \
+  /usr/include/c++/13/ext/concurrence.h \
+  /usr/include/c++/13/bits/shared_ptr_atomic.h \
+  /usr/include/c++/13/bits/atomic_base.h \
+  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/13/backward/auto_ptr.h \
+  /usr/include/c++/13/pstl/glue_memory_defs.h \
+  /usr/include/c++/13/pstl/execution_defs.h \
+  ../src/module.h \
   ../src/smoothOscillator.h
 
 CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: ../src/oscillator4.cpp \
@@ -1749,8 +1765,13 @@ CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: ../src/oscillator4.cpp \
   ../src/smoothOscillator.h \
   ../Gamma/Gamma/Envelope.h \
   /usr/include/c++/13/cfloat \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
+  ../imgui/imgui.h \
+  ../imgui/imconfig.h \
+  /usr/include/assert.h
 
+
+../src/oscillator4.cpp:
 
 /usr/include/c++/13/pstl/execution_defs.h:
 
@@ -1765,8 +1786,6 @@ CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: ../src/oscillator4.cpp \
 /usr/include/c++/13/memory:
 
 ../src/oscillator4.h:
-
-../src/oscillator4.cpp:
 
 ../src/vena_utility.h:
 

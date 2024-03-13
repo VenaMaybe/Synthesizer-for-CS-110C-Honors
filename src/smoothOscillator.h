@@ -1,5 +1,5 @@
 #include "Gamma/Envelope.h"
-
+#include "imgui.h"
 
 class IBaseOsc {
 public:
@@ -23,10 +23,12 @@ class SmoothOsc : public IBaseOsc, public ISmoothable {
 public:
     WAVEFORM osc;
     gam::Seg<> smoothedFreq;
+    float targetFreq;
+    float targetLen;
 
     // speed is in seconds, freq in hrtz
     SmoothOsc(float speed, float freq = 440.f)
-    : smoothedFreq(speed, freq, freq) {
+    : targetFreq(freq), targetLen(speed), smoothedFreq(speed, freq, freq) {
         smoothedFreq.length(speed);
     }
     
@@ -35,13 +37,23 @@ public:
         return osc(); // Generates and returns osc output
     }
 
-    void renderUI() override {
-        // Uh render stuff here later
-    }
-
     void setFreq(float freq) override {smoothedFreq.levels(freq, freq);};
+
     // This sets the frequency to approach
     void setSmoothFreq(float freq) {smoothedFreq = freq;};
     void setSmoothLen(float t) {smoothedFreq.length(t);};
 
+    void renderUI() override {
+        // This renders the elements related to a general oscilator
+
+        // Render a slider to control the frequency
+        if (ImGui::SliderFloat("Frequency", &targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
+            setSmoothFreq(targetFreq);
+        }
+
+        // Optionally, render additional controls as needed
+        if (ImGui::SliderFloat("Smoothing Freq", &targetLen, 0.f, 1.0f, "%.2f")) {
+            setSmoothLen(targetLen);
+        }
+    }
 };

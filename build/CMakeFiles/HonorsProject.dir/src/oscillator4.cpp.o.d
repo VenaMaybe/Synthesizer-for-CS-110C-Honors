@@ -235,4 +235,6 @@ CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: \
  /home/vena/school/cpp110C/honors/src/smoothOscillator.h \
  /home/vena/school/cpp110C/honors/Gamma/Gamma/Envelope.h \
  /usr/include/c++/13/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
+ /home/vena/school/cpp110C/honors/imgui/imgui.h \
+ /home/vena/school/cpp110C/honors/imgui/imconfig.h /usr/include/assert.h

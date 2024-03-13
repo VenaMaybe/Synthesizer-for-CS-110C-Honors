@@ -16,7 +16,9 @@ bool isAudioActive = true;
 float mainVol = 0.1f;
 gam::Seg<> smoothGain(0.05f, mainVol, mainVol);
 
-#include "smoothOscillator.h"
+//#include "smoothOscillator.h"
+#include "oscillator4.h"
+
 
 /*
 template <typename WAVEFORM>
@@ -58,7 +60,7 @@ struct smoothOsc {
 
 };
 */
-
+/*
 class Oscillator {
 public:
     enum WAVEFORM { SINE, SAW, SQUARE };
@@ -144,12 +146,12 @@ private:
     std::function<void(float)> currentSetSmoothFreqFunc;
     std::function<void()> currentUpdateSmoothFreqFunc;
     std::function<void(float)> currentSetSmoothingLenFunc;
-
 };
+*/
 
 class Synth {
 public: // For now organize it later lol
-    Oscillator osc1{Oscillator::SINE};
+    Oscillator4 osc1{Oscillator4::SINE};
 
     float output = 0.f;
     float generate() {
@@ -218,7 +220,7 @@ int main() {
     print("SETTING SYNTH ATTRIBUTES!!");
     //Set Synth Attributes!
 
-    synth.osc1.changeOscillator(Oscillator::SINE);
+    synth.osc1.changeOscillator(Oscillator4::SINE);
     synth.osc1.setSmoothingLen(0.5f);
 	
 	//Get default output/input
