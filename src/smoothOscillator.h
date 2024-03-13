@@ -14,6 +14,8 @@ public:
     virtual ~ISmoothable() {}
     virtual void setSmoothFreq(float freq) = 0;
     virtual void setSmoothLen(float length) = 0;
+    virtual float getSmoothFreq() const = 0;
+    virtual float getSmoothLen() const = 0;
 };
 
 
@@ -39,9 +41,14 @@ public:
 
     void setFreq(float freq) override {smoothedFreq.levels(freq, freq);};
 
+    // Getters
+    float getSmoothFreq() const override {return targetFreq;}
+    float getSmoothLen() const override {return targetLen;}
+
     // This sets the frequency to approach
-    void setSmoothFreq(float freq) {smoothedFreq = freq;};
-    void setSmoothLen(float t) {smoothedFreq.length(t);};
+    void setSmoothFreq(float freq) {smoothedFreq = freq;}
+    void setSmoothLen(float t) {smoothedFreq.length(t);}
+    
 
     void renderUI() override {
         // This renders the elements related to a general oscilator

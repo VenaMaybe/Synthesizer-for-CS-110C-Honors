@@ -25,9 +25,11 @@ public:
     }
 
     void changeOscillator(WAVEFORM oscType) {
-
-        targetFreq = currentOsc-> ;
-        smoothingLen = currentOsc-> ;
+        // Before changing the oscillator, update targetFreq and smoothingLen
+        if (auto* smoothable = dynamic_cast<ISmoothable*>(currentOsc.get())) {
+            targetFreq = smoothable->getSmoothFreq();
+            smoothingLen = smoothable->getSmoothLen();
+        }
 
         this->oscType = oscType;
         switch (oscType) {
