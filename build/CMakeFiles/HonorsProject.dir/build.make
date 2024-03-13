@@ -83,10 +83,24 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HonorsProject.dir/src/main.cpp.s"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vena/school/cpp110C/honors/src/main.cpp -o CMakeFiles/HonorsProject.dir/src/main.cpp.s
 
+CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
+CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: ../src/oscillator4.cpp
+CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o"
+	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o -MF CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o.d -o CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o -c /home/vena/school/cpp110C/honors/src/oscillator4.cpp
+
+CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.i"
+	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vena/school/cpp110C/honors/src/oscillator4.cpp > CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.i
+
+CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.s"
+	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vena/school/cpp110C/honors/src/oscillator4.cpp -o CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.s
+
 CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o: ../imgui/imgui.cpp
 CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o -c /home/vena/school/cpp110C/honors/imgui/imgui.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.s: cmake_force
 CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o: ../imgui/imgui_demo.cpp
 CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o -c /home/vena/school/cpp110C/honors/imgui/imgui_demo.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.s: cmake_force
 CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o: ../imgui/imgui_draw.cpp
 CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o -c /home/vena/school/cpp110C/honors/imgui/imgui_draw.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.s: cmake_force
 CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o: ../imgui/imgui_tables.cpp
 CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.o -c /home/vena/school/cpp110C/honors/imgui/imgui_tables.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/HonorsProject.dir/imgui/imgui_tables.cpp.s: cmake_force
 CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o: ../imgui/imgui_widgets.cpp
 CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o -c /home/vena/school/cpp110C/honors/imgui/imgui_widgets.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.s: cmake_force
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o: ../imgui/backends/imgui_impl_glfw.cpp
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.o -c /home/vena/school/cpp110C/honors/imgui/backends/imgui_impl_glfw.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_glfw.cpp.s: cmake_force
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/HonorsProject.dir/flags.make
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o: ../imgui/backends/imgui_impl_opengl3.cpp
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/HonorsProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o"
 	/usr/bin/g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o -MF CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.o -c /home/vena/school/cpp110C/honors/imgui/backends/imgui_impl_opengl3.cpp
 
 CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
@@ -184,6 +198,7 @@ CMakeFiles/HonorsProject.dir/imgui/backends/imgui_impl_opengl3.cpp.s: cmake_forc
 # Object files for target HonorsProject
 HonorsProject_OBJECTS = \
 "CMakeFiles/HonorsProject.dir/src/main.cpp.o" \
+"CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o" \
 "CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o" \
 "CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o" \
 "CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o" \
@@ -196,6 +211,7 @@ HonorsProject_OBJECTS = \
 HonorsProject_EXTERNAL_OBJECTS =
 
 HonorsProject: CMakeFiles/HonorsProject.dir/src/main.cpp.o
+HonorsProject: CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o
 HonorsProject: CMakeFiles/HonorsProject.dir/imgui/imgui.cpp.o
 HonorsProject: CMakeFiles/HonorsProject.dir/imgui/imgui_demo.cpp.o
 HonorsProject: CMakeFiles/HonorsProject.dir/imgui/imgui_draw.cpp.o
@@ -209,7 +225,7 @@ HonorsProject: ../Gamma/build/lib/libGamma.a
 HonorsProject: /usr/lib/x86_64-linux-gnu/libGLX.so
 HonorsProject: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 HonorsProject: CMakeFiles/HonorsProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable HonorsProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vena/school/cpp110C/honors/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable HonorsProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HonorsProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

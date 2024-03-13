@@ -321,6 +321,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/oscillator4.o: src/oscillator4.cpp.o
+.PHONY : src/oscillator4.o
+
+# target to build an object file
+src/oscillator4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o
+.PHONY : src/oscillator4.cpp.o
+
+src/oscillator4.i: src/oscillator4.cpp.i
+.PHONY : src/oscillator4.i
+
+# target to preprocess a source file
+src/oscillator4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.i
+.PHONY : src/oscillator4.cpp.i
+
+src/oscillator4.s: src/oscillator4.cpp.s
+.PHONY : src/oscillator4.s
+
+# target to generate assembly for a file
+src/oscillator4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.s
+.PHONY : src/oscillator4.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -354,6 +378,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/oscillator4.o"
+	@echo "... src/oscillator4.i"
+	@echo "... src/oscillator4.s"
 .PHONY : help
 
 

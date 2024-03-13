@@ -19,11 +19,12 @@ public:
         inputs.push_back(connection);
     }
 
-    void addOutput(Connection conneciton) {
-        outputs.push_back(conneciton);
+    void addOutput(Connection connection) {
+        outputs.push_back(connection);
     }
 
-    virtual void generate() = 0;
+    virtual float generate() = 0; // Proccesses Audio
+    virtual void renderUI() = 0; // Rendering ui for module
 };
 
 

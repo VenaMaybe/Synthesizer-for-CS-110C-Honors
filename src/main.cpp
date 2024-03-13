@@ -16,9 +16,12 @@ bool isAudioActive = true;
 float mainVol = 0.1f;
 gam::Seg<> smoothGain(0.05f, mainVol, mainVol);
 
-template <typename OscillatorType>
+#include "smoothOscillator.h"
+
+/*
+template <typename WAVEFORM>
 struct smoothOsc {
-    OscillatorType osc;
+    WAVEFORM osc;
     float targetFreq = 440.f;
 	float frequency = targetFreq;
     float modIndex;
@@ -54,45 +57,46 @@ struct smoothOsc {
     }
 
 };
+*/
 
 class Oscillator {
 public:
-    enum OscillatorType { SINE, SAW, SQUARE };
-    OscillatorType currentOscType;
+    enum WAVEFORM { SINE, SAW, SQUARE };
+    WAVEFORM currentOscType;
 
-    Oscillator(OscillatorType oscType) : currentOscType(oscType) {
+    Oscillator(WAVEFORM oscType) : currentOscType(oscType) {
         // Initialize oscillator based on the selected type
         changeOscillator(oscType);
     }
 
-    void changeOscillator(OscillatorType oscType) {
+    void changeOscillator(WAVEFORM oscType) {
         currentOscType = oscType;
         // Initialize oscillator based on the selected type
         switch (currentOscType) {
         case SINE:
-            currentGenerateFunc = std::bind(&smoothOsc<gam::Sine<>>::generate, &osc_sine1);
-            currentSetSmoothFreqFunc = std::bind(&smoothOsc<gam::Sine<>>::setSmoothFreq, &osc_sine1, std::placeholders::_1);
-            currentUpdateSmoothFreqFunc = std::bind(&smoothOsc<gam::Sine<>>::updateSmoothFreq, &osc_sine1);
-            currentSetSmoothingLenFunc = std::bind(&smoothOsc<gam::Sine<>>::setSmoothingLen, &osc_sine1, std::placeholders::_1);
+            currentGenerateFunc = std::bind(&SmoothOsc<gam::Sine<>>::generate, &osc_sine1);
+            currentSetSmoothFreqFunc = std::bind(&SmoothOsc<gam::Sine<>>::setSmoothFreq, &osc_sine1, std::placeholders::_1);
+            //currentUpdateSmoothFreqFunc = std::bind(&smoothOsc<gam::Sine<>>::updateSmoothFreq, &osc_sine1);
+            currentSetSmoothingLenFunc = std::bind(&SmoothOsc<gam::Sine<>>::setSmoothLen, &osc_sine1, std::placeholders::_1);
             break;
         case SAW:
-            currentGenerateFunc = std::bind(&smoothOsc<gam::Saw<>>::generate, &osc_saw1);
-            currentSetSmoothFreqFunc = std::bind(&smoothOsc<gam::Saw<>>::setSmoothFreq, &osc_saw1, std::placeholders::_1);
-            currentUpdateSmoothFreqFunc = std::bind(&smoothOsc<gam::Saw<>>::updateSmoothFreq, &osc_saw1);
-            currentSetSmoothingLenFunc = std::bind(&smoothOsc<gam::Saw<>>::setSmoothingLen, &osc_saw1, std::placeholders::_1);
+            currentGenerateFunc = std::bind(&SmoothOsc<gam::Saw<>>::generate, &osc_saw1);
+            currentSetSmoothFreqFunc = std::bind(&SmoothOsc<gam::Saw<>>::setSmoothFreq, &osc_saw1, std::placeholders::_1);
+            //currentUpdateSmoothFreqFunc = std::bind(&smoothOsc<gam::Saw<>>::updateSmoothFreq, &osc_saw1);
+            currentSetSmoothingLenFunc = std::bind(&SmoothOsc<gam::Saw<>>::setSmoothLen, &osc_saw1, std::placeholders::_1);
             break;
         case SQUARE:
-            currentGenerateFunc = std::bind(&smoothOsc<gam::Square<>>::generate, &osc_square1);
-            currentSetSmoothFreqFunc = std::bind(&smoothOsc<gam::Square<>>::setSmoothFreq, &osc_square1, std::placeholders::_1);
-            currentUpdateSmoothFreqFunc = std::bind(&smoothOsc<gam::Square<>>::updateSmoothFreq, &osc_square1);
-            currentSetSmoothingLenFunc = std::bind(&smoothOsc<gam::Square<>>::setSmoothingLen, &osc_square1, std::placeholders::_1);
+            currentGenerateFunc = std::bind(&SmoothOsc<gam::Square<>>::generate, &osc_square1);
+            currentSetSmoothFreqFunc = std::bind(&SmoothOsc<gam::Square<>>::setSmoothFreq, &osc_square1, std::placeholders::_1);
+            //currentUpdateSmoothFreqFunc = std::bind(&smoothOsc<gam::Square<>>::updateSmoothFreq, &osc_square1);
+            currentSetSmoothingLenFunc = std::bind(&SmoothOsc<gam::Square<>>::setSmoothLen, &osc_square1, std::placeholders::_1);
             break;
         }
     }
 
     float generate() { return currentGenerateFunc(); }
     void setSmoothFreq(float freqToSet) { currentSetSmoothFreqFunc(freqToSet); }
-    void updateSmoothFreq() { currentUpdateSmoothFreqFunc(); }
+    //void updateSmoothFreq() { currentUpdateSmoothFreqFunc(); }
     void setSmoothingLen(float desiredLen) { currentSetSmoothingLenFunc(desiredLen); }
 
     bool windowOpen = true; // Add this flag at a global scope or within your class
@@ -110,7 +114,7 @@ public:
         const char* oscTypes[] = { "Sine", "Saw", "Square" };
         int currentItem = static_cast<int>(currentOscType);
         if (ImGui::Combo("Wave", &currentItem, oscTypes, IM_ARRAYSIZE(oscTypes))) {
-            changeOscillator(static_cast<OscillatorType>(currentItem));
+            changeOscillator(static_cast<WAVEFORM>(currentItem));
             setSmoothingLen(smoothingLength);
         }
 
@@ -118,7 +122,7 @@ public:
         // Render a slider to control the frequency
         if (ImGui::SliderFloat("Frequency", &this->targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {
             setSmoothFreq(targetFreq);
-            updateSmoothFreq();
+            //updateSmoothFreq();
         }
 
         // Optionally, render additional controls as needed
@@ -132,9 +136,9 @@ public:
 private:
     float targetFreq = 440.f;
     float smoothingLength = 0.1f;
-    smoothOsc<gam::Sine<>> osc_sine1{smoothingLength, targetFreq};
-    smoothOsc<gam::Saw<>> osc_saw1{smoothingLength, targetFreq};
-    smoothOsc<gam::Square<>> osc_square1{smoothingLength, targetFreq};
+    SmoothOsc<gam::Sine<>> osc_sine1{smoothingLength, targetFreq};
+    SmoothOsc<gam::Saw<>> osc_saw1{smoothingLength, targetFreq};
+    SmoothOsc<gam::Square<>> osc_square1{smoothingLength, targetFreq};
 
     std::function<float()> currentGenerateFunc; // Function pointer to current generate function
     std::function<void(float)> currentSetSmoothFreqFunc;
@@ -160,6 +164,7 @@ public: // For now organize it later lol
 
 };
 
+// Audio io proccessing
 void audioCB(gam::AudioIOData& io) {
     if (isAudioActive) {
         // my synth with proccessing code insdie
