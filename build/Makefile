@@ -321,6 +321,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/module.o: src/module.cpp.o
+.PHONY : src/module.o
+
+# target to build an object file
+src/module.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/module.cpp.o
+.PHONY : src/module.cpp.o
+
+src/module.i: src/module.cpp.i
+.PHONY : src/module.i
+
+# target to preprocess a source file
+src/module.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/module.cpp.i
+.PHONY : src/module.cpp.i
+
+src/module.s: src/module.cpp.s
+.PHONY : src/module.s
+
+# target to generate assembly for a file
+src/module.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/module.cpp.s
+.PHONY : src/module.cpp.s
+
 src/oscillator4.o: src/oscillator4.cpp.o
 .PHONY : src/oscillator4.o
 
@@ -378,6 +402,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/module.o"
+	@echo "... src/module.i"
+	@echo "... src/module.s"
 	@echo "... src/oscillator4.o"
 	@echo "... src/oscillator4.i"
 	@echo "... src/oscillator4.s"

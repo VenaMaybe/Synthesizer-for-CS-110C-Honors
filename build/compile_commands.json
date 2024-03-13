@@ -6,6 +6,11 @@
 },
 {
   "directory": "/home/vena/school/cpp110C/honors/build",
+  "command": "/usr/bin/g++-13  -I/home/vena/school/cpp110C/honors/imgui -I/home/vena/school/cpp110C/honors/imgui/backends -I/home/vena/school/cpp110C/honors/Gamma -g -std=gnu++17 -o CMakeFiles/HonorsProject.dir/src/module.cpp.o -c /home/vena/school/cpp110C/honors/src/module.cpp",
+  "file": "/home/vena/school/cpp110C/honors/src/module.cpp"
+},
+{
+  "directory": "/home/vena/school/cpp110C/honors/build",
   "command": "/usr/bin/g++-13  -I/home/vena/school/cpp110C/honors/imgui -I/home/vena/school/cpp110C/honors/imgui/backends -I/home/vena/school/cpp110C/honors/Gamma -g -std=gnu++17 -o CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o -c /home/vena/school/cpp110C/honors/src/oscillator4.cpp",
   "file": "/home/vena/school/cpp110C/honors/src/oscillator4.cpp"
 },

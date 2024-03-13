@@ -10,6 +10,7 @@
 
 // My includes
 #include "vena_utility.h"
+#include "Synth.h"
 
 // Global control variable
 bool isAudioActive = true;
@@ -17,7 +18,6 @@ float mainVol = 0.1f;
 gam::Seg<> smoothGain(0.05f, mainVol, mainVol);
 
 //#include "smoothOscillator.h"
-#include "Oscillator4.h"
 
 
 /*
@@ -148,7 +148,7 @@ private:
     std::function<void(float)> currentSetSmoothingLenFunc;
 };
 */
-
+/*
 class Synth {
 public: // For now organize it later lol
     Oscillator4 osc1{Oscillator4::SINE};
@@ -165,6 +165,7 @@ public: // For now organize it later lol
     }
 
 };
+*/
 
 // Audio io proccessing
 void audioCB(gam::AudioIOData& io) {
@@ -220,9 +221,10 @@ int main() {
     print("SETTING SYNTH ATTRIBUTES!!");
     //Set Synth Attributes!
 
-    synth.osc1.changeOscillator(Oscillator4::SINE);
-    synth.osc1.setSmoothingLen(0.5f);
-	
+    //synth.osc1.changeOscillator(Oscillator4::SINE);
+    //synth.osc1.setSmoothingLen(0.5f);
+	//////////////////////////////
+
 	//Get default output/input
 	gam::AudioDevice adevi = gam::AudioDevice::defaultInput();
 	gam::AudioDevice adevo = gam::AudioDevice::defaultOutput();

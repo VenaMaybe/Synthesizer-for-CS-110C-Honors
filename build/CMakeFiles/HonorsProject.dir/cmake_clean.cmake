@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.o.d"
   "CMakeFiles/HonorsProject.dir/src/main.cpp.o"
   "CMakeFiles/HonorsProject.dir/src/main.cpp.o.d"
+  "CMakeFiles/HonorsProject.dir/src/module.cpp.o"
+  "CMakeFiles/HonorsProject.dir/src/module.cpp.o.d"
   "CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o"
   "CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o.d"
   "HonorsProject"

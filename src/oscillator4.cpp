@@ -6,7 +6,7 @@
 #include "Oscillator4.h"
 
 Oscillator4::Oscillator4(WAVEFORM oscType)
-: oscType(oscType), targetFreq(440.f), smoothingLen(0.1f) {
+: oscType(oscType), targetFreq(440.f), smoothingLen(0.1f), Module("Osc4") {
     changeOscillator(oscType);
 }
 
@@ -49,11 +49,11 @@ void Oscillator4::setSmoothingLen(float desiredLen) {
     }
 };
 
-void Oscillator4::renderUI() {
+void Oscillator4::renderUI(const std::string windowTitle) {
     // Each element is rendered from it's base?
     // Maybe some kinda render tree?
 
-    ImGui::Begin("Oscillator Controls", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::Begin(windowTitle.c_str(), nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 
     // Render a dropdown to change the oscillator type
     const char* oscTypes[] = { "Sine", "Saw", "Square" };

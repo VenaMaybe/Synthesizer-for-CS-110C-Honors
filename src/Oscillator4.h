@@ -6,6 +6,10 @@
 #include "IBaseOscillators.h"
 #include "Module.h" // Only if Module needs to be known in this declaration
 
+/*
+Has an output!!
+*/
+
 class Oscillator4 : public Module {
 public:
     enum WAVEFORM { SINE, SAW, SQUARE };
@@ -16,7 +20,7 @@ public:
     float generate() override;
     void setSmoothFreq(float freqToSet);
     void setSmoothingLen(float desiredLen);
-    void renderUI() override;
+    void renderUI(const std::string windowTitle) override;
 
 private:
     float targetFreq;

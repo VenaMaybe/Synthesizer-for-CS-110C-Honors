@@ -267,6 +267,7 @@ CMakeFiles/HonorsProject.dir/src/main.cpp.o: \
  /usr/include/GLFW/glfw3.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h \
  /home/vena/school/cpp110C/honors/src/vena_utility.h \
+ /home/vena/school/cpp110C/honors/src/Synth.h \
  /home/vena/school/cpp110C/honors/src/Oscillator4.h \
  /usr/include/c++/13/memory \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
