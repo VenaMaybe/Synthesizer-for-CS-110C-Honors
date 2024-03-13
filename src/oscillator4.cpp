@@ -8,6 +8,10 @@
 Oscillator4::Oscillator4(WAVEFORM oscType)
 : oscType(oscType), targetFreq(440.f), smoothingLen(0.1f), Module("Osc4") {
     changeOscillator(oscType);
+    // Initialize the output1.signal with a new Signal object
+    output1.signal = std::make_shared<Signal>();
+    // Optionally add output1 to the outputs vector if you want to use it for modular connections
+    outputs.push_back(output1);
 }
 
 void Oscillator4::changeOscillator(WAVEFORM oscType) {
@@ -32,7 +36,19 @@ void Oscillator4::changeOscillator(WAVEFORM oscType) {
 };
 
 float Oscillator4::generate() {
-    return currentOsc->generate();
+    float output = currentOsc->generate();
+    
+    
+
+    // Assuming Oscillator4 has a single output for simplicity
+    if (!outputs.empty() && outputs[0].signal) {
+        output1.signal->setValue(output);
+    }
+
+    return output;
+//    return outputValue;
+
+//    return currentOsc->generate();
 };
 
 void Oscillator4::setSmoothFreq(float freqToSet) {

@@ -16,8 +16,14 @@ public: // For now organize it later lol
         addModule(osc1);
 
         // Add another Oscillator4 module set to SAW waveform
-        auto osc2 = std::make_shared<Oscillator4>(Oscillator4::SAW);
+        auto osc2 = std::make_shared<Oscillator4>(Oscillator4::SINE);
         addModule(osc2);
+
+        auto osc3 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc3);
+
+        auto osc4 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc4);
     }
 
     void addModule(std::shared_ptr<Module> module) {
@@ -44,10 +50,20 @@ public: // For now organize it later lol
 
     float output = 0.f;
     float generate() {
-        output = 0.f;        
-        //output += osc1.generate();
-        //output += osc2.generate();
-        processAudio();
+        output = 0.f; // Reset output to 0
+        processAudio(); // Ensure all modules have processed their current state
+
+        for (auto& module : modules) {
+            // For simplicity, assume each module's generate method updates its internal state
+            // and returns a float representing its contribution to the final output
+            if (!module->outputs.empty()) {
+                output += module->outputs[0].signal->getValue();
+            }
+        }
+
+        output /= modules.size();
+
+        // Here, output contains the summed signal from all modules
         return output;
     }
 

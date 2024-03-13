@@ -23,6 +23,8 @@ public:
     void renderUI(const std::string windowTitle) override;
 
 private:
+    Connection output1;
+
     float targetFreq;
     float smoothingLen;
     WAVEFORM oscType;
