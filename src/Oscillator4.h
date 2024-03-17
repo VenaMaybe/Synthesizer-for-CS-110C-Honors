@@ -28,6 +28,7 @@ private:
     float targetFreq;
     float smoothingLen;
     WAVEFORM oscType;
+    
     std::unique_ptr<IBaseOsc> currentOsc;
 };
 

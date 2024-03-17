@@ -24,6 +24,18 @@ public: // For now organize it later lol
 
         auto osc4 = std::make_shared<Oscillator4>(Oscillator4::SINE);
         addModule(osc4);
+
+        auto osc5 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc5);
+
+        auto osc6 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc6);
+
+        auto osc7 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc7);
+
+        auto osc8 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc8);
     }
 
     void addModule(std::shared_ptr<Module> module) {

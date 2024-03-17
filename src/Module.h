@@ -37,6 +37,10 @@ public:
     // Constructor    
     Module(const std::string& baseName) {
         generateName(baseName); // Generate a unique name upon module creation
+
+// TEST MAYBE THIS IS CAUSING LAG WHEN CONSTRUCTING A MODULE????
+// you gotta figure out a way to make a profiler!!
+
     }
     virtual ~Module() {}
 

@@ -5,6 +5,7 @@
 #include "SmoothOscillator.h"
 #include "Oscillator4.h"
 
+// Osc Constructor
 Oscillator4::Oscillator4(WAVEFORM oscType)
 : oscType(oscType), targetFreq(440.f), smoothingLen(0.1f), Module("Osc4") {
     changeOscillator(oscType);
