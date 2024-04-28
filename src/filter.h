@@ -10,7 +10,6 @@
 
 class FilterHPLP : public Module {
 public:
-	gam::FilterType filterType;
 
 	FilterHPLP();
 
@@ -45,6 +44,7 @@ private:
 	// input variables
 	float targetCutoff = 1000.f;
 	float targetResonance = 0.707f;
+	int selectedType = 0;
 
 };
 

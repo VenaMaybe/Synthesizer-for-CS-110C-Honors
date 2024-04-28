@@ -112,6 +112,18 @@ void FilterHPLP::renderUI(const std::string windowTitle) {
 			// outputConnections[selectedInput].signal->finalDest = !outputConnections[selectedInput].signal->finalDest;
 		}
 
+		const char* filterTypes[] {"Low Pass", "High Pass"};
+		if (ImGui::Combo("Filter Type", &selectedType, filterTypes, 2)) {
+			switch (selectedType) {
+			case 0:
+				filter.type(gam::LOW_PASS);
+				break;
+			case 1:
+				filter.type(gam::HIGH_PASS);
+				break;
+			}
+		}
+
 		if (ImGui::SliderFloat("Cutoff", &targetCutoff, 20.0f, 20000.0f, "%0.1f Hz")) {
 			filter.freq(targetCutoff);
 		}
