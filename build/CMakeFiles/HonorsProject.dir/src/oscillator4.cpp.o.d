@@ -200,11 +200,11 @@ CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: \
  /home/vena/school/cpp110C/honors/imgui/imgui.h \
  /home/vena/school/cpp110C/honors/imgui/imconfig.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h /usr/include/assert.h \
- /home/vena/school/cpp110C/honors/src/SmoothOscillator.h \
+ /home/vena/school/cpp110C/honors/src/smoothOscillator.h \
  /home/vena/school/cpp110C/honors/Gamma/Gamma/Envelope.h \
  /usr/include/c++/13/cfloat \
- /home/vena/school/cpp110C/honors/src/IBaseOscillators.h \
- /home/vena/school/cpp110C/honors/src/Oscillator4.h \
+ /home/vena/school/cpp110C/honors/src/iBaseOscillators.h \
+ /home/vena/school/cpp110C/honors/src/oscillator4.h \
  /usr/include/c++/13/memory \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
  /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/unique_ptr.h \
@@ -240,7 +240,7 @@ CMakeFiles/HonorsProject.dir/src/oscillator4.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /home/vena/school/cpp110C/honors/src/Module.h /usr/include/c++/13/string \
+ /home/vena/school/cpp110C/honors/src/module.h /usr/include/c++/13/string \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \

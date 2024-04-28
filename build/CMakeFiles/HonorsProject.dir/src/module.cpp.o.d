@@ -1,6 +1,6 @@
 CMakeFiles/HonorsProject.dir/src/module.cpp.o: \
  /home/vena/school/cpp110C/honors/src/module.cpp \
- /usr/include/stdc-predef.h /home/vena/school/cpp110C/honors/src/Module.h \
+ /usr/include/stdc-predef.h /home/vena/school/cpp110C/honors/src/module.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

@@ -297,6 +297,54 @@ imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/imgui/imgui_widgets.cpp.s
 .PHONY : imgui/imgui_widgets.cpp.s
 
+src/Port.o: src/Port.cpp.o
+.PHONY : src/Port.o
+
+# target to build an object file
+src/Port.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/Port.cpp.o
+.PHONY : src/Port.cpp.o
+
+src/Port.i: src/Port.cpp.i
+.PHONY : src/Port.i
+
+# target to preprocess a source file
+src/Port.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/Port.cpp.i
+.PHONY : src/Port.cpp.i
+
+src/Port.s: src/Port.cpp.s
+.PHONY : src/Port.s
+
+# target to generate assembly for a file
+src/Port.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/Port.cpp.s
+.PHONY : src/Port.cpp.s
+
+src/filter.o: src/filter.cpp.o
+.PHONY : src/filter.o
+
+# target to build an object file
+src/filter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/filter.cpp.o
+.PHONY : src/filter.cpp.o
+
+src/filter.i: src/filter.cpp.i
+.PHONY : src/filter.i
+
+# target to preprocess a source file
+src/filter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/filter.cpp.i
+.PHONY : src/filter.cpp.i
+
+src/filter.s: src/filter.cpp.s
+.PHONY : src/filter.s
+
+# target to generate assembly for a file
+src/filter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HonorsProject.dir/build.make CMakeFiles/HonorsProject.dir/src/filter.cpp.s
+.PHONY : src/filter.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -399,6 +447,12 @@ help:
 	@echo "... imgui/imgui_widgets.o"
 	@echo "... imgui/imgui_widgets.i"
 	@echo "... imgui/imgui_widgets.s"
+	@echo "... src/Port.o"
+	@echo "... src/Port.i"
+	@echo "... src/Port.s"
+	@echo "... src/filter.o"
+	@echo "... src/filter.i"
+	@echo "... src/filter.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
