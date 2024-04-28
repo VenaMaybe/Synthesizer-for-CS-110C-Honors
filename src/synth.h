@@ -18,18 +18,18 @@ public: // For now organize it later lol
         auto osc1 = std::make_shared<Oscillator4>(Oscillator4::SINE);
         addModule(osc1);
 
+        // Add another Oscillator4 module set to SAW waveform
+        auto osc2 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc2);
+
+        auto osc3 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        addModule(osc3);
+
         auto filter1 = std::make_shared<FilterHPLP>();
         addModule(filter1);
 
         auto filter2 = std::make_shared<FilterHPLP>();
         addModule(filter2);
-
-        // Add another Oscillator4 module set to SAW waveform
-        //auto osc2 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        //addModule(osc2);
-
-        //auto osc3 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        //addModule(osc3);
     }
 
     void addModule(std::shared_ptr<Module> module) {

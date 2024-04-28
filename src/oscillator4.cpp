@@ -8,7 +8,7 @@
 // Osc Constructor
 Oscillator4::Oscillator4(WAVEFORM oscType)
 : oscType(oscType), targetFreq(440.f), smoothingLen(0.1f), Module("Osc4"),
-        output1("Osc Output1") {
+        output1("Osc Output1"), soundEnabled(false) {
     
     
     output1.connectionName = baseName + " " + std::to_string(typeCounts.at(baseName)) + " Output 1"; // kinda scuffed add to module later
@@ -43,7 +43,7 @@ void Oscillator4::changeOscillator(WAVEFORM oscType) {
 };
 
 float Oscillator4::generate() {
-    float output = currentOsc->generate();
+    float output = currentOsc->generate() * soundEnabled;
     // Assuming Oscillator4 has a single output for simplicity
     if (!outputs.empty() && outputs[0].signal) {
         output1.signal->setValue(output);
@@ -79,6 +79,13 @@ void Oscillator4::renderUI(const std::string windowTitle) {
         changeOscillator(static_cast<WAVEFORM>(currentItem));
         //setSmoothingLen(smoothingLength); WILL MB MESS UP LATER!!!
     }
+
+
+    // Checkbox on the right
+    if (ImGui::Checkbox("On", &soundEnabled)) {
+    };
+    // This renders the elements related to a general oscilator
+    ImGui::SameLine(); // Keeps the next widget on the same line
 
     // Renders freq and smoothing freq sliders!
     currentOsc->renderUI();

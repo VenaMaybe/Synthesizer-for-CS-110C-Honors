@@ -25,6 +25,7 @@ public:
 private:
     Connection output1;
 
+    bool soundEnabled;
     float targetFreq;
     float smoothingLen;
     WAVEFORM oscType;
