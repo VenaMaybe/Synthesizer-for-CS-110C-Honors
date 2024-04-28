@@ -4,7 +4,7 @@
 #include "Gamma/Envelope.h"
 #include "imgui.h"
 
-#include "IBaseOscillators.h"
+#include "iBaseOscillators.h"
 
 
 //
@@ -38,8 +38,14 @@ public:
     void setSmoothLen(float t) {smoothedFreq.length(t);}
     
 
+    bool checkboxValue = false;
     void renderUI() override {
+
+        // Checkbox on the right
+        ImGui::Checkbox("##Port", &checkboxValue);
         // This renders the elements related to a general oscilator
+        ImGui::SameLine(); // Keeps the next widget on the same line
+
 
         // Render a slider to control the frequency
         if (ImGui::SliderFloat("Frequency", &targetFreq, 20.0f, 1000.0f, "%.1f Hz")) {

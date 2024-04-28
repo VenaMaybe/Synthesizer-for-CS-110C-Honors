@@ -10,3 +10,8 @@ This is the example!
 Oscillator
 Lfo
 Filter
+
+==============================
+
+is a    =   inheritance!!!
+has a   =   composition!!!

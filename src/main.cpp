@@ -10,7 +10,7 @@
 
 // My includes
 #include "vena_utility.h"
-#include "Synth.h"
+#include "synth.h"
 
 // Global control variable
 bool isAudioActive = true;
@@ -63,7 +63,7 @@ int main() {
     ImGui_ImplOpenGL3_Init("#version 130"); // Use your OpenGL version here
 
     // Audio setup
-	int blockSize = (256*4);		// how many samples per block?
+	int blockSize = (256*8);		// how many samples per block?
 	float sampleRate = 44100;		// sampling rate (samples/second)
 	int outputChannels = 2;			// how many output channels to open
 	int inputChannels = 0;			// how many input channels to open

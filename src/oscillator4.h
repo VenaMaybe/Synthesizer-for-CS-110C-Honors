@@ -3,8 +3,8 @@
 #define OSCILLATOR4_H
 
 #include <memory>
-#include "IBaseOscillators.h"
-#include "Module.h" // Only if Module needs to be known in this declaration
+#include "iBaseOscillators.h"
+#include "module.h" // Only if Module needs to be known in this declaration
 
 /*
 Has an output!!

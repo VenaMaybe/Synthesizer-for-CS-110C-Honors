@@ -1,7 +1,8 @@
 #ifndef SYNTH_H
 #define SYNTH_H
 
-#include "Oscillator4.h"
+#include "oscillator4.h"
+#include "filter.h"
 #include <vector>
 #include <memory>
 
@@ -10,32 +11,25 @@ public: // For now organize it later lol
 
     std::vector<std::shared_ptr<Module>> modules;
 
+    // For now just order them in priority, later,
+    // Make priority que and render in that order!!!
     Synth() {
         // Add an Oscillator4 module set to SINE waveform
         auto osc1 = std::make_shared<Oscillator4>(Oscillator4::SINE);
         addModule(osc1);
 
+        auto filter1 = std::make_shared<FilterHPLP>();
+        addModule(filter1);
+
+        auto filter2 = std::make_shared<FilterHPLP>();
+        addModule(filter2);
+
         // Add another Oscillator4 module set to SAW waveform
-        auto osc2 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc2);
+        //auto osc2 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        //addModule(osc2);
 
-        auto osc3 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc3);
-
-        auto osc4 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc4);
-
-        auto osc5 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc5);
-
-        auto osc6 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc6);
-
-        auto osc7 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc7);
-
-        auto osc8 = std::make_shared<Oscillator4>(Oscillator4::SINE);
-        addModule(osc8);
+        //auto osc3 = std::make_shared<Oscillator4>(Oscillator4::SINE);
+        //addModule(osc3);
     }
 
     void addModule(std::shared_ptr<Module> module) {
@@ -53,6 +47,9 @@ public: // For now organize it later lol
     void renderModulesUI() {
         for (auto& module : modules) {
             module->renderUI(module->getUniqueName());
+                // passing a pointer to the module list
+            module->linkModuleList(&modules);
+
             // Additional ImGui logic for drawing connections
         }
     }
@@ -68,7 +65,8 @@ public: // For now organize it later lol
         for (auto& module : modules) {
             // For simplicity, assume each module's generate method updates its internal state
             // and returns a float representing its contribution to the final output
-            if (!module->outputs.empty()) {
+                //std::cout << module->getUniqueName() << " ----> " << module->outputs[0].signal->finalDest << std::endl;
+            if (!module->outputs.empty() && module->outputs[0].signal->finalDest == true) {
                 output += module->outputs[0].signal->getValue();
             }
         }

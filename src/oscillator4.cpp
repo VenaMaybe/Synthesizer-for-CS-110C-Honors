@@ -2,17 +2,23 @@
 #include <Gamma/Oscillator.h>
 #include "imgui.h" // For renderUI
 
-#include "SmoothOscillator.h"
-#include "Oscillator4.h"
+#include "smoothOscillator.h"
+#include "oscillator4.h"
 
 // Osc Constructor
 Oscillator4::Oscillator4(WAVEFORM oscType)
-: oscType(oscType), targetFreq(440.f), smoothingLen(0.1f), Module("Osc4") {
+: oscType(oscType), targetFreq(440.f), smoothingLen(0.1f), Module("Osc4"),
+        output1("Osc Output1") {
+    
+    
+    output1.connectionName = baseName + " " + std::to_string(typeCounts.at(baseName)) + " Output 1"; // kinda scuffed add to module later
+    addOutput(output1);
+        
     changeOscillator(oscType);
     // Initialize the output1.signal with a new Signal object
-    output1.signal = std::make_shared<Signal>();
+    //output1.signal = std::make_shared<Signal>();
     // Optionally add output1 to the outputs vector if you want to use it for modular connections
-    outputs.push_back(output1);
+    //outputs.push_back(output1);
 }
 
 void Oscillator4::changeOscillator(WAVEFORM oscType) {
@@ -38,18 +44,12 @@ void Oscillator4::changeOscillator(WAVEFORM oscType) {
 
 float Oscillator4::generate() {
     float output = currentOsc->generate();
-    
-    
-
     // Assuming Oscillator4 has a single output for simplicity
     if (!outputs.empty() && outputs[0].signal) {
         output1.signal->setValue(output);
+        output1.signal->finalDest = true;
     }
-
     return output;
-//    return outputValue;
-
-//    return currentOsc->generate();
 };
 
 void Oscillator4::setSmoothFreq(float freqToSet) {
